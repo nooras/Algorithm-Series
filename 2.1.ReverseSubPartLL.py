@@ -13,6 +13,7 @@ class ReverseSubPartLL:
             self.head = newNode
         else:
             current = self.head
+            #print(self.head, "innnn")
             while True:
                 if current.next is None:
                     break
@@ -43,28 +44,39 @@ class ReverseSubPartLL:
         else:
             return False
 
-def addd(self, rll, temp):
+def addd(rll, temp):
     prev = None
-    current = rll
+    current = rll.head
     # print(current, temp)
-    while True:
-        if current is None or current.next is None:
-            break
-        prev = current
-        current = current.next
-    curr = temp
+    if current == None:
+        current = temp
+    else:
+        while True:
+            if current.next is None:
+                break
+            print(current)
+            current = current.next
+            # if current.next is None:
+            #     break
+            # prev = current
+            # current = current.next
+        current.next = temp
+    #print(rll, temp, "Hii")
+    print("-----------", rll)
+    rll.print_list()
+    return rll
     # print(prev)
-    while curr:
-        #print(curr.data)
-        if rll is None:
-            current = curr
-            print(current, "Current")
-        else:
-            current.next = curr
-        curr = curr.next
-    while current:
-        print(current.data)
-        current = current.next
+    # while curr:
+    #     #print(curr.data)
+    #     if rll is None:
+    #         current = curr
+    #         print(current, "Current")
+    #     else:
+    #         current.next = curr
+    #     curr = curr.next
+    # while current:
+    #     print(current.data)
+    #     current = current.next
 
 
 
@@ -79,7 +91,12 @@ for y in range(len(x)):
         if temp.isListEmpty() is False:
             # print("hii")
             temp.reverse()
-            rll = addd(rll.head, temp.head)
+            #print(rll.head)
+            #print(rll, temp)
+            rll = addd(rll, temp)
+            #print(rll, temp)
+            #temp.print_list()
+            #rll.print_list()
             temp = ReverseSubPartLL()
         if x[y]%2 != 0:
             rll.insert(x[y])
